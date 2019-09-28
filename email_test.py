@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import smtplib, datetime
+import smtplib, datetime, os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication
@@ -64,7 +64,7 @@ class MailUtils:
 
 
 subject = "Automation Daily Report (" + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ")"
-report_path = "./api_test_report.html"
+report_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "api_test_report.html")
 MailUtils(subject=subject, report_path=report_path, attachment=True).send()
 
 
